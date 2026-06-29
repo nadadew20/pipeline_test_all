@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Run Docker  Container') {
             steps {
                 script {
                     // Run Docker image with build number in container name
