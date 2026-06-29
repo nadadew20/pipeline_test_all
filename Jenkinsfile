@@ -21,17 +21,24 @@ pipeline {
                 }
             }
         }
-
-        stage('Run Docker  Container') {
+        stage('Run Container') {
             steps {
                 script {
-                    // Run Docker image with build number in container name
-                    sh """
-                        docker run  --name "${APP_NAME}"-"${GIT_BRANCH}"-${BUILD_NUMBER} -d ${APP_NAME}:${BUILD_NUMBER}
-                        docker ps
-                    """
+                    runDocker(env.APP_NAME, env.BUILD_NUMBER, "5001")
                 }
             }
+        }
+
+    //    stage('Run Docker  Container') {
+       //     steps {
+     //           script {
+                    // Run Docker image with build number in container name
+              //      sh """
+            //            docker run  --name "${APP_NAME}"-"${GIT_BRANCH}"-${BUILD_NUMBER} -d ${APP_NAME}:${BUILD_NUMBER}
+          //              docker ps
+        //            """
+      //          }
+     //       }
         }
     }
 }
