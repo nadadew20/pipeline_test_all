@@ -27,17 +27,17 @@ pipeline {
                 script {
          sh """
     # Stop the old container if it exists
-                docker stop ${APP_NAME}-main || true
+                docker stop ${APP_NAME}++-main || true
 
                 # Remove the old container if it exists
-                docker rm ${APP_NAME}-main || true
+                docker rm ${APP_NAME}++-main || true
                 }
             }
         }
         stage('Run Container') {
             steps {
                 script {
-                    runDocker(env.APP_NAME, env.BUILD_NUMBER, "5005")
+                    runDocker(env.APP_NAME++, env.BUILD_NUMBER, "5005")
                 }
             }
         }
