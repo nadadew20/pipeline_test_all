@@ -37,7 +37,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    runDocker(env.APP_NAME++, env.BUILD_NUMBER, "5005")
+                    runDocker(env.APP_NAME, env.BUILD_NUMBER, "5005")
                 }
             }
         }
