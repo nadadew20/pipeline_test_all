@@ -22,6 +22,18 @@ pipeline {
                 }
             }
         }
+          stage('delete container') {
+            steps {
+                script {
+         sh """
+    # Stop the old container if it exists
+                docker stop ${APP_NAME}-main || true
+
+                # Remove the old container if it exists
+                docker rm ${APP_NAME}-main || true
+                }
+            }
+        }
         stage('Run Container') {
             steps {
                 script {
